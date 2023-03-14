@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies List</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+    {% block content %}
+
+    
+        <h3 class="py-3 text-center">🎬 🎟🍿 Movies List 🎬 🎟🍿</h3>
+
+            
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>🎬 Title</th>
+                    <th>🚀 Genre</th>
+                    <th>📌 Stock </th>
+                    <th>⭐️ Daily Rate</th>
+                </tr>
+            </thead>
+            <tbody> 
+            {% for movie in movies %}
+                <tr>
+                    <td> <a href="{% url 'movies:detail' movie.id %}">{{ movie.title }}</a></td>
+                    <td>{{ movie.genre }}</td>
+                    <td>{{ movie.number_in_stock}}</td>
+                    <td>{{ movie.daily_rate}}</td>
+                </tr>
+            {% endfor %}  
+            </tbody>
+        </table>
+
+        {% endblock  %}
+    </main>
+
+</body>
+</html>
